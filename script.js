@@ -1,4 +1,4 @@
-let selectedPack = "";
+tulet selectedPack = "";
 
 function showTab(tab){
 document.getElementById("ff").classList.add("hidden");
@@ -32,5 +32,29 @@ document.getElementById("formBox").classList.add("hidden");
 }
 
 function sendOrder(){
+let uid = document.getElementById("uid").value;
+  let method = document.getElementById("method").value;
+  let ref = document.getElementById("ref").value;
 
+  if(uid === "" || ref === ""){
+    document.getElementById("msg").innerText = "❌ Fenoy tsara ny information";
+    return;
+  }
+
+  let number = "261387508615"; // WhatsApp admin
+
+  let message =
+    "🛒 S.K Shop 💳\n\n" +
+    "🗃️ Pack: " + selectedPack + "\n" +
+    "🆔 UID: " + uid + "\n" +
+    "💳 Méthode: " + method + "\n" +
+    "🧾 Référence: " + ref + "\n\n" +
+    "💰 PAIEMENT NUMÉRO:\n" +
+    "• 0375348868 - HERY NIRINA HENINTSOA RAHELIARIMANANA\n" +
+    "• 0387508615 - Miora\n\n";
+
+  let url = "https://wa.me/" + number + "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+}
 
